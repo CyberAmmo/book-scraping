@@ -28,15 +28,17 @@ def get_next_book():
     print(next(books_generator))
 
 
+user_choices = {
+    'b': print_best_books,
+    'c': cheapest_book,
+    'n': get_next_book
+}
+
 def menu():
     user_imput = input(USER_CHOICE)
     while user_imput != 'q':
-        if user_imput == 'b':
-            print_best_books()
-        elif user_imput == 'c':
-            cheapest_book()
-        elif user_imput == 'n':
-            get_next_book()
+        if user_imput in ('b', 'c', 'n'):
+            user_choices[user_imput]()
         else:
             print('Please enter a valid command!')
         user_imput = input(USER_CHOICE)
